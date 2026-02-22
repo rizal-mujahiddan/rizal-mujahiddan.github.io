@@ -1,1 +1,0 @@
-# rizal-mujahiddan.github.io
