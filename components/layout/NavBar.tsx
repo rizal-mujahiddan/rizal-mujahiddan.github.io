@@ -1,22 +1,40 @@
+import * as motion from "motion/react-client";
+
 export default function NavBar() {
   return (
-    <nav className="flex justify-between bg-cyan-700 p-5">
-      <section>
+    <nav className="flex justify-between bg-cyan-700">
+      <section className="flex items-center">
         <h1 className="text-4xl">Rizal Mujahiddan Portofolio</h1>
       </section>
       <section className="flex gap-0 justify-between">
-        <a className="p-4 cursor-pointer text-2xl" href="/">
+        <motion.a
+          whileHover={{ backgroundColor: "#3ca4fa" }}
+          className="p-4 cursor-pointer text-2xl"
+          href="/"
+        >
           Home
-        </a>
-        <a className="p-4 cursor-pointer text-2xl" href="/project">
+        </motion.a>
+        <motion.a
+          whileHover={{ backgroundColor: "#3ca4fa" }}
+          className="p-4 cursor-pointer text-2xl"
+          href="/project"
+        >
           Project
-        </a>
-        <a className="p-4 cursor-pointer text-2xl" href="#about">
+        </motion.a>
+        <motion.a
+          whileHover={{ backgroundColor: "#3ca4fa" }}
+          className="p-4 cursor-pointer text-2xl"
+          href="#about"
+        >
           About
-        </a>
-        <a className="p-4 cursor-pointer text-2xl" href="#contact">
+        </motion.a>
+        <motion.a
+          whileHover={{ backgroundColor: "#3ca4fa" }}
+          className="p-4 cursor-pointer text-2xl"
+          href="#contact"
+        >
           Contact
-        </a>
+        </motion.a>
       </section>
     </nav>
   );
