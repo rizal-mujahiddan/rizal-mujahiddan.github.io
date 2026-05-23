@@ -64,6 +64,23 @@ export default function NavBar() {
             hover:bg-secondary
             transition
           "
+          href="/skills"
+        >
+          Skills
+        </motion.a>
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="px-4
+            py-2
+            rounded-xl
+            text-sm
+            font-medium
+            text-muted
+            hover:text-foreground
+            hover:bg-secondary
+            transition
+          "
           href="#about"
         >
           About

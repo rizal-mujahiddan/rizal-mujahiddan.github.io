@@ -3,7 +3,7 @@ import NavBar from "@/components/layout/NavBar";
 import Image from "next/image";
 import Carousel from "@/components/ui/Carousel";
 
-export default function Project() {
+export default function Skills() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <NavBar />
@@ -25,7 +25,7 @@ export default function Project() {
           "
         >
           <section>
-            <h2 className="text-3xl">Projects</h2>
+            <h2 className="text-3xl">Skills</h2>
           </section>
           <section className="w-7xl">
             <Carousel />
