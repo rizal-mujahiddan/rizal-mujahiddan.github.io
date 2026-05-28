@@ -1,8 +1,18 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
+import CarouselItem from "./CarouselItem";
+import { ReactElement, Children } from "react";
 
-export default function Carousel() {
+type carouselitemChildren = {
+  children:
+    | ReactElement<typeof CarouselItem>
+    | ReactElement<typeof CarouselItem>[];
+};
+
+export default function Carousel({ children }: carouselitemChildren) {
+  const childing = Children.toArray(children);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "center",
@@ -14,62 +24,7 @@ export default function Carousel() {
   return (
     <div className="w-full max-w-screen-2xl mx-auto">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          <div className="flex-[0_0_95%] min-w-0 pl-4">
-            <div
-              className="
-                h-96
-                rounded-3xl
-                bg-primary
-                text-white
-                flex
-                items-center
-                justify-center
-                text-3xl
-                font-bold
-              "
-            >
-              Slide 1
-            </div>
-          </div>
-
-          <div className="flex-[0_0_95%] min-w-0 pl-4">
-            <div
-              className="
-                h-96
-                rounded-3xl
-                bg-secondary
-                text-foreground
-                flex
-                items-center
-                justify-center
-                text-3xl
-                font-bold
-              "
-            >
-              Slide 2
-            </div>
-          </div>
-
-          <div className="flex-[0_0_95%] min-w-0 pl-4">
-            <div
-              className="
-                h-96
-                rounded-3xl
-                bg-card
-                border
-                border-border
-                flex
-                items-center
-                justify-center
-                text-3xl
-                font-bold
-              "
-            >
-              Slide 3
-            </div>
-          </div>
-        </div>
+        <div className="flex">{childing}</div>
       </div>
       <div className="flex gap-4 mt-8 justify-center">
         <button
