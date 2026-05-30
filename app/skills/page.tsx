@@ -1,7 +1,7 @@
 import FooterCustom from "@/components/layout/FooterCustom";
 import NavBar from "@/components/layout/NavBar";
-import Image from "next/image";
 import Carousel from "@/components/ui/Carousel";
+import CarouselItem from "@/components/ui/CarouselItem";
 
 export default function Skills() {
   return (
@@ -28,7 +28,12 @@ export default function Skills() {
             <h2 className="text-3xl">Skills</h2>
           </section>
           <section className="w-7xl">
-            <Carousel />
+            <Carousel>
+              <CarouselItem>Slide 1</CarouselItem>
+              <CarouselItem>Slide 3</CarouselItem>
+              <CarouselItem>Slide 2</CarouselItem>
+              <CarouselItem>Slide 3</CarouselItem>
+            </Carousel>
           </section>
         </main>
       </div>
