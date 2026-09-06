@@ -6,8 +6,7 @@ import { ReactElement, Children } from "react";
 
 type carouselitemChildren = {
   children:
-    | ReactElement<typeof CarouselItem>
-    | ReactElement<typeof CarouselItem>[];
+    ReactElement<typeof CarouselItem> | ReactElement<typeof CarouselItem>[];
 };
 
 export default function Carousel({ children }: carouselitemChildren) {
