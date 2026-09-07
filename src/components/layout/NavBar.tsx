@@ -6,8 +6,8 @@ export default function NavBar() {
     { href: "/", label: "Home", isExternal: false },
     { href: "/project", label: "Project", isExternal: false },
     { href: "/skills", label: "Skills", isExternal: false },
-    { href: "#about", label: "About", isExternal: true },
-    { href: "#contact", label: "Contact", isExternal: true },
+    { href: "/about", label: "About", isExternal: false },
+    { href: "/contact", label: "Contact", isExternal: false },
   ];
 
   return (

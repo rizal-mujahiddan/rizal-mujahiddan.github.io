@@ -148,7 +148,7 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-4 py-2 text-sm font-medium transition ${active ? "border-cyan-300/50 bg-cyan-300/10 text-cyan-100" : "border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/25 hover:text-white"}`}
+      className={`rounded-full border px-4 py-2 text-sm font-medium transition ${active ? "border-cyan-300/50 bg-cyan-300/10 text-cyan-100" : "border-white/10 bg-white/300 text-slate-400 hover:border-white/25 hover:text-white"}`}
     >
       {label}
     </button>
@@ -162,7 +162,7 @@ function SkillCard({
 }) {
   const Icon = skill.icon;
   return (
-    <article className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-cyan-300/30">
+    <article className="rounded-2xl border border-white/10 bg-white/4 p-6 transition hover:-translate-y-1 hover:border-cyan-300/30">
       <div className="flex items-start justify-between gap-4">
         <div className="rounded-xl bg-cyan-300/10 p-3 text-cyan-300">
           <Icon size={21} />
