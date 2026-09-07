@@ -1,6 +1,15 @@
+import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
 export default function NavBar() {
+  const links = [
+    { href: "/", label: "Home", isExternal: false },
+    { href: "/project", label: "Project", isExternal: false },
+    { href: "/skills", label: "Skills", isExternal: false },
+    { href: "#about", label: "About", isExternal: true },
+    { href: "#contact", label: "Contact", isExternal: true },
+  ];
+
   return (
     <nav
       className="sticky top-0 z-50
@@ -11,37 +20,38 @@ export default function NavBar() {
         border-b border-border"
     >
       <section className="flex items-center">
-        <h1 className="text-2xl font-bold tracking-tight">
+        <Link to="/" className="text-2xl font-bold tracking-tight">
           Rizal Mujahiddan Portofolio
-        </h1>
+        </Link>
       </section>
       <section className="flex gap-0 justify-between">
-        {[
-          { href: "/", label: "Home" },
-          { href: "/project", label: "Project" },
-          { href: "/skills", label: "Skills" },
-          { href: "#about", label: "About" },
-          { href: "#contact", label: "Contact" },
-        ].map(({ href, label }) => (
-          <motion.a
-            key={href}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-4
-              py-2
-              rounded-xl
-              text-sm
-              font-medium
-              text-muted
-              hover:text-foreground
-              hover:bg-secondary
-              transition
-            "
-            href={href}
-          >
-            {label}
-          </motion.a>
-        ))}
+        {links.map(({ href, label, isExternal }) => {
+          const className =
+            "px-4 py-2 rounded-xl text-sm font-medium text-muted hover:text-foreground hover:bg-secondary transition inline-block";
+
+          return isExternal ? (
+            <motion.a
+              key={href}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className={className}
+              href={href}
+            >
+              {label}
+            </motion.a>
+          ) : (
+            <motion.div
+              key={href}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-block"
+            >
+              <Link className={className} to={href}>
+                {label}
+              </Link>
+            </motion.div>
+          );
+        })}
       </section>
     </nav>
   );
