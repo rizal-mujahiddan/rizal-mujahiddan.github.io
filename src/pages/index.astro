@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/layout/NavBar";
+import FooterCustom from "../components/layout/FooterCustom";
+---
+
+<Layout title="Rizal Mujahiddan – Portfolio">
+  <div class="min-h-screen bg-background text-foreground">
+    <NavBar client:load />
+    <div class="max-w-7xl mx-auto px-8 py-12">
+      <main
+        class="
+          flex
+          items-center
+          justify-between
+          gap-16
+          bg-card
+          border
+          border-border
+          rounded-3xl
+          px-16
+          py-20
+          shadow-sm
+        "
+      >
+        <section class="flex-1 flex justify-center">
+          <img
+            src="/peopleExample.jpg"
+            alt="File Foto Saya"
+            loading="eager"
+            width="500"
+            height="500"
+            class="
+              rounded-3xl
+              object-cover
+              shadow-lg
+            "
+          />
+        </section>
+        <section class="flex-1">
+          <div class="max-w-xl">
+            <h2 class="text-5xl font-bold tracking-tight mb-6">
+              Rizal Mujahiddan
+            </h2>
+            <article class="text-lg text-muted leading-8">
+              Seorang yang menyukai teknologi, bisnis dan finansial. dengan
+              gigihnya, Belajar Beradaptasi karena distrupsi AI
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <FooterCustom client:load />
+  </div>
+</Layout>
+

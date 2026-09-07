@@ -1,8 +1,6 @@
-"use client";
-
 import useEmblaCarousel from "embla-carousel-react";
 import CarouselItem from "./CarouselItem";
-import { ReactElement, Children } from "react";
+import { Children, type ReactElement } from "react";
 
 type carouselitemChildren = {
   children:

@@ -1,2 +1,55 @@
+# Dependencies
 node_modules/
-.next/
+
+# Astro build output
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+bun-debug.log*
+bun-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Local development
+*.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+
+# Testing
+playwright-report/
+test-results/
+
+# Vite
+.vite/
+
+# Svelte (if ever used)
+.svelte-kit/
+
+# Misc
+*.swp
+*.swo

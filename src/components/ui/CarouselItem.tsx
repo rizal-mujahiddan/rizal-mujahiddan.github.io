@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 type carouselItemValue = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
@@ -22,7 +22,7 @@ export default function CarouselItem({
                 justify-center
                 text-3xl
                 font-bold
-                ${className}
+                ${className ?? ""}
                 `}
         {...props}
       >

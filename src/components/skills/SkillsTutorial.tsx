@@ -1,5 +1,3 @@
-"use client";
-
 import { useMemo, useState } from "react";
 import { Chip, LinearProgress, Tab, Tabs, Tooltip } from "@mui/material";
 import { Check, Search } from "lucide-react";
@@ -61,7 +59,7 @@ export function SkillsTutorial() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search my skills..."
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-2.5 pl-10 pr-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
+              className="w-full rounded-xl border border-white/10 bg-white/4 py-2.5 pl-10 pr-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
             />
           </label>
         </div>
@@ -109,7 +107,7 @@ function BoxTabs({
   onChange: (value: SkillType) => void;
 }) {
   return (
-    <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5">
+    <div className="mt-8 rounded-2xl border border-white/10 bg-white/3 p-1.5">
       <Tabs
         value={type}
         onChange={(_, value: SkillType) => onChange(value)}

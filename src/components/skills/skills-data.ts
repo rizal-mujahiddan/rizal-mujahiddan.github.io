@@ -176,8 +176,10 @@ export const skills: Record<SkillType, Skill[]> = {
   hard: skillGroups.hard.flatMap((group) => group.skills),
   soft: skillGroups.soft.flatMap((group) => group.skills),
 };
+
 export const levelLabel = (level: number) =>
   level >= 85 ? "Strong" : level >= 70 ? "Working knowledge" : "Growing";
+
 export const categoryLabels = (type: SkillType) =>
   skills[type]
     .map((skill) => skill.category)
@@ -187,7 +189,6 @@ export const categoryDescription = (type: SkillType, category: string) => {
   const group = skillGroups[type].find((group) =>
     group.skills.some((skill) => skill.category === category),
   );
-
   return group?.description ?? `Skills related to ${category}.`;
 };
 
