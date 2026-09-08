@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FaMailBulk, FaGithub, FaLinkedin } from "react-icons/fa";
 import { TextField, Box, Grid, Button } from "@mui/material";
 
@@ -54,14 +54,30 @@ export default function ContactPage() {
     }));
   };
 
+
+  const buildMailto = useCallback(() =>{
+      const recipient = 'rizal.mujahiddan@gmail.com';
+      const subject = 'New Acquaintance Form Submission';
+
+      const body = 
+      `Name: ${formData.name || '(not provided)'}\n` +
+      `Email: ${formData.email || '(not provided)'}\n\n` +
+      `───\n${formData.message}\n\nSent from React contact form.`;
+      return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  },[formData]);
+
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Semua data input terkumpul di dalam objek formData
+    if(!formData.name.trim() && !formData.email.trim()){
+      alert('Please enter at least a name or an email');
+      return;
+    }
+
+    window.location.href = buildMailto();
+
     console.log("Data yang dikirim:", formData);
 
-    // Contoh cara mengakses field spesifik:
-    // console.log("Email:", formData.email);
   };
   return (
     <main className="mx-auto w-screen my-12">
