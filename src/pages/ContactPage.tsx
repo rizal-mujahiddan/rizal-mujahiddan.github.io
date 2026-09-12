@@ -54,30 +54,28 @@ export default function ContactPage() {
     }));
   };
 
+  const buildMailto = useCallback(() => {
+    const recipient = "rizal.mujahiddan@gmail.com";
+    const subject = "New Acquaintance Form Submission";
 
-  const buildMailto = useCallback(() =>{
-      const recipient = 'rizal.mujahiddan@gmail.com';
-      const subject = 'New Acquaintance Form Submission';
-
-      const body = 
-      `Name: ${formData.name || '(not provided)'}\n` +
-      `Email: ${formData.email || '(not provided)'}\n\n` +
+    const body =
+      `Name: ${formData.name || "(not provided)"}\n` +
+      `Email: ${formData.email || "(not provided)"}\n\n` +
       `───\n${formData.message}\n\nSent from React contact form.`;
-      return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-  },[formData]);
+    return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }, [formData]);
 
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if(!formData.name.trim() && !formData.email.trim()){
-      alert('Please enter at least a name or an email');
+    if (!formData.name.trim() && !formData.email.trim()) {
+      alert("Please enter at least a name or an email");
       return;
     }
 
     window.location.href = buildMailto();
 
     console.log("Data yang dikirim:", formData);
-
   };
   return (
     <main className="mx-auto w-screen my-12">
@@ -96,14 +94,19 @@ export default function ContactPage() {
           <p className="text-lg">
             <FaLinkedin className="inline" />{" "}
             <span className="text-gray-400">LINKEDIN</span>:
-            /in/rizal-mujahiddan
+            <a href="https://www.linkedin.com/in/rizal-mujahiddan">
+              {" "}
+              rizal-mujahiddan
+            </a>
           </p>
           <p className="text-lg">
             <FaGithub className="inline" />{" "}
-            <span className="text-gray-400">GITHUB</span>: /rizal-mujahiddan
+            <span className="text-gray-400">GITHUB</span>:{" "}
+            <a href="github.com/rizal-mujahiddan"> rizal-mujahiddan</a>
           </p>
         </section>
         <section>
+          <p className="text-2xl text-gray-400">Direct Contacts</p>
           <Box
             component="form"
             onSubmit={handleSubmit}

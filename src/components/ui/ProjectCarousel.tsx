@@ -25,8 +25,24 @@ export default function ProjectCarousel() {
           Telco Customer Churn Model (Data Science)
         </div>
       </CarouselItem>
-      <CarouselItem>Slide 2</CarouselItem>
-      <CarouselItem>Slide 3</CarouselItem>
+      <CarouselItem
+        className="relative overflow-hidden cursor-pointer"
+        onClick={() =>
+          window.open(
+            "https://huggingface.co/spaces/rizalm69/TelcoCustomerChurnModel",
+            "_blank",
+          )
+        }
+      >
+        <div className="relative z-10">
+          Library Tunes for Music (Rust Programming)
+        </div>
+      </CarouselItem>
+      <CarouselItem>
+        <div className="relative z-10">
+          Library Tunes for Music (Rust Programming)
+        </div>
+      </CarouselItem>
     </Carousel>
   );
 }
