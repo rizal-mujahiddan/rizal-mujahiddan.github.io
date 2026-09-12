@@ -154,7 +154,7 @@ export default function ContactPage() {
                 color="primary"
                 fullWidth
               >
-                Kirim Data
+                Send Data
               </Button>
             </Grid>
           </Box>

@@ -18,7 +18,7 @@ export default function HomePage() {
       >
         <section className="flex-1 flex justify-center">
           <img
-            src="/peopleExample.jpg"
+            src="/AuthorWebsiteSquare.jpeg"
             alt="File Foto Saya"
             loading="eager"
             width={500}
@@ -36,8 +36,9 @@ export default function HomePage() {
               Rizal Mujahiddan
             </h2>
             <article className="text-lg text-muted leading-8">
-              Seorang yang menyukai teknologi, bisnis dan finansial. dengan
-              gigihnya, Belajar Beradaptasi karena distrupsi AI
+              From building applications to understanding how they break, I’m a
+              backend engineer moving into application security and
+              cybersecurity while adapting to AI/ML and data.
             </article>
           </div>
         </section>

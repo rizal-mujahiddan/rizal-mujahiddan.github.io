@@ -5,8 +5,8 @@ import {
   Database,
   Layers3,
   MessageCircle,
+  Shield,
   Sparkles,
-  Target,
   Users,
 } from "lucide-react";
 
@@ -33,15 +33,28 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
         "Languages and frameworks I use to build reliable digital products.",
       skills: [
         {
-          name: "JavaScript & TypeScript",
+          name: "Backend Engineering (.NET / C#)",
           category: "Programming",
-          level: 90,
+          level: 70,
           summary:
-            "Building interactive, typed web experiences with modern JavaScript.",
+            "Building and maintaining APIs, database-backed features, and third-party integrations in a production team.",
           evidence: [
-            "Next.js and React applications",
-            "Reusable component systems",
-            "Typed API integrations",
+            "2 years backend development with C# / .NET",
+            "REST API development and debugging",
+            "Database changes (tables, columns) and Refit-based integrations",
+          ],
+          icon: Code2,
+        },
+        {
+          name: "JavaScript & TypeScript (React)",
+          category: "Programming",
+          level: 40,
+          summary:
+            "Working knowledge on the frontend to support backend and full-stack tasks when needed.",
+          evidence: [
+            "React basics for supporting features",
+            "TypeScript fundamentals",
+            "Occasional frontend work outside primary backend role",
           ],
           icon: Code2,
         },
@@ -52,15 +65,15 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
       description: "Turning datasets into clear patterns and useful decisions.",
       skills: [
         {
-          name: "Python & Data Analysis",
+          name: "Python, Data & Machine Learning",
           category: "Data Science",
-          level: 75,
+          level: 65,
           summary:
-            "Exploring, cleaning, and communicating insights from structured data.",
+            "Comparing forecasting models and handling the data preparation behind them.",
           evidence: [
-            "Python, NumPy, and Pandas",
-            "Exploratory data analysis",
-            "Charts and insight summaries",
+            "Forecasting with STL, Prophet, and XGBoost via PyCaret",
+            "Feature engineering: imputation, drift checks, cross-validation, Granger causality selection",
+            "National temperature-prediction competition & ANTAM gold price thesis",
           ],
           icon: BarChart3,
         },
@@ -73,28 +86,48 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
         {
           name: "SQL & Databases",
           category: "Databases",
-          level: 70,
+          level: 60,
           summary:
-            "Designing practical data models and querying application data.",
+            "Designing practical schema changes and querying application data through EF.",
           evidence: [
-            "SQL fundamentals",
-            "Relational data modeling",
-            "API data fetching",
+            "Adding tables and columns to existing schemas",
+            "Complex queries via Entity Framework",
+            "Query optimization with AI assistance",
           ],
           icon: Database,
         },
         {
-          name: "Git, Figma & Deployment",
+          name: "Git & Version Control",
           category: "Tools",
-          level: 85,
+          level: 60,
           summary:
-            "Moving ideas from design to versioned, deployable products.",
+            "Confident day-to-day Git workflow: branching, stashing, and history management.",
           evidence: [
-            "Git and GitHub workflows",
-            "Figma handoff",
-            "Deployment workflows",
+            "Branch, checkout, pull, push, stash, reset",
+            "Feature branching in a team workflow",
+            "Comfortable resolving common Git scenarios",
           ],
           icon: Layers3,
+        },
+      ],
+    },
+    {
+      label: "Security",
+      description:
+        "Learning how to find, understand, and fix application weaknesses.",
+      skills: [
+        {
+          name: "Application Security & Cybersecurity",
+          category: "Security",
+          level: 45,
+          summary:
+            "Building on backend experience to understand how applications are attacked and secured.",
+          evidence: [
+            "TryHackMe and Hack The Box beginner labs",
+            "OverTheWire Natas progress (~level 11)",
+            "Recon and web exploitation practice with Nuclei",
+          ],
+          icon: Shield,
         },
       ],
     },
@@ -108,12 +141,13 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
         {
           name: "Technical Communication",
           category: "Communication",
-          level: 88,
-          summary: "Explaining complex ideas clearly for different audiences.",
+          level: 50,
+          summary:
+            "Explaining technical work clearly while still growing in English and public writing.",
           evidence: [
-            "Clear technical writing",
-            "Presenting with purpose",
-            "Active listening",
+            "Explaining bugs and system behavior to teammates",
+            "Documenting and clarifying requirements",
+            "Active listening in team discussions",
           ],
           icon: MessageCircle,
         },
@@ -126,28 +160,15 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
         {
           name: "Teamwork",
           category: "Collaboration",
-          level: 86,
+          level: 60,
           summary:
-            "Working openly with others to solve problems and ship better work.",
+            "Working as a dependable team member on shared goals and problems.",
           evidence: [
-            "Pair problem solving",
-            "Useful feedback",
-            "Remote collaboration",
+            "Collaborating in a backend team",
+            "Pair problem-solving and code discussion",
+            "Cross-team work with QA and DevOps",
           ],
           icon: Users,
-        },
-        {
-          name: "Leadership",
-          category: "Leadership",
-          level: 72,
-          summary:
-            "Taking ownership, setting direction, and helping others grow.",
-          evidence: [
-            "Setting direction",
-            "Mentoring teammates",
-            "Thoughtful decisions",
-          ],
-          icon: Target,
         },
       ],
     },
@@ -158,12 +179,13 @@ export const skillGroups: Record<SkillType, SkillGroup[]> = {
         {
           name: "Adaptability",
           category: "Adaptability",
-          level: 90,
-          summary: "Turning ambiguity and feedback into better outcomes.",
+          level: 45,
+          summary:
+            "Learning new tools and domains quickly as the role and tech change.",
           evidence: [
-            "Learning new tools quickly",
-            "Breaking down ambiguity",
-            "Reflecting and improving",
+            "Moved from backend into ML/data work",
+            "Now learning AppSec and security fundamentals",
+            "Adapting to AI-assisted workflows",
           ],
           icon: Sparkles,
         },
@@ -178,7 +200,7 @@ export const skills: Record<SkillType, Skill[]> = {
 };
 
 export const levelLabel = (level: number) =>
-  level >= 85 ? "Strong" : level >= 70 ? "Working knowledge" : "Growing";
+  level >= 80 ? "Strong" : level >= 60 ? "Working knowledge" : "Growing";
 
 export const categoryLabels = (type: SkillType) =>
   skills[type]
