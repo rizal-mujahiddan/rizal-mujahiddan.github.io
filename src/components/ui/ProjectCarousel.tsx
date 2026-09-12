@@ -29,7 +29,7 @@ export default function ProjectCarousel() {
         className="relative overflow-hidden cursor-pointer"
         onClick={() =>
           window.open(
-            "https://huggingface.co/spaces/rizalm69/TelcoCustomerChurnModel",
+            "https://github.com/rizal-mujahiddan/learning-Music-Tunes",
             "_blank",
           )
         }
