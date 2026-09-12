@@ -3,7 +3,7 @@ import { MdEmail } from "react-icons/md";
 
 const socials = [
   { icon: FaGithub, href: "https://github.com/rizal-mujahiddan", label: "GitHub" },
-  { icon: FaLinkedin, href: "https://linkedin.com/in/YOUR_HANDLE", label: "LinkedIn" },
+  { icon: FaLinkedin, href: "https://linkedin.com/in/rizal-mujahiddan", label: "LinkedIn" },
   { icon: MdEmail, href: "mailto:rizal.mujahiddan@gmail.com", label: "Email" },
 ];
 

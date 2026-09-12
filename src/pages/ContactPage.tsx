@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Mail, Send } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const EMAIL = "rizal.mujahiddan@gmail.com"; // ← change this
+const EMAIL = "rizal.mujahiddan@gmail.com";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
