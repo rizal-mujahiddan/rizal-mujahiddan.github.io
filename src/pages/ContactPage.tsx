@@ -1,165 +1,135 @@
-import React, { useCallback, useState } from "react";
-import { FaMailBulk, FaGithub, FaLinkedin } from "react-icons/fa";
-import { TextField, Box, Grid, Button } from "@mui/material";
+import { useState } from "react";
+import { Mail, Send } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const EMAIL = "rizal.mujahiddan@gmail.com"; // ← change this
 
 export default function ContactPage() {
-  const darkTextFieldStyle = {
-    // 1. Label styles (Inactive & Active)
-    "& .MuiInputLabel-root": {
-      color: "#94a3b8", // Light slate gray (highly visible)
-      fontWeight: 500,
-      "&.Mui-focused": {
-        color: "#38bdf8", // Bright cyan when active
-      },
-    },
-    // 2. Input box container styles
-    "& .MuiOutlinedInput-root": {
-      backgroundColor: "#1e293b", // Dark slate background to contrast against black page
-      borderRadius: "8px",
-      color: "#ffffff", // Crisp white text typed by user
-      fontSize: "0.95rem",
-      // Default border
-      "& fieldset": {
-        borderColor: "rgba(255, 255, 255, 0.2)",
-      },
-      // Hover border
-      "&:hover fieldset": {
-        borderColor: "#38bdf8",
-      },
-      // Focused border
-      "&.Mui-focused fieldset": {
-        borderColor: "#38bdf8",
-        borderWidth: "2px",
-      },
-    },
-    // 3. Webkit Autofill fix (prevents browser autofill from making background white)
-    "& .MuiOutlinedInput-input:-webkit-autofill": {
-      WebkitBoxShadow: "0 0 0 100px #1e293b inset",
-      WebkitTextFillColor: "#ffffff",
-      borderRadius: "8px",
-    },
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Message from ${form.name}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\n— ${form.name} (${form.email})`,
+    );
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    setSent(true);
   };
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const update = (key: keyof typeof form) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => setForm({ ...form, [key]: e.target.value });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const buildMailto = useCallback(() => {
-    const recipient = "rizal.mujahiddan@gmail.com";
-    const subject = "New Acquaintance Form Submission";
-
-    const body =
-      `Name: ${formData.name || "(not provided)"}\n` +
-      `Email: ${formData.email || "(not provided)"}\n\n` +
-      `───\n${formData.message}\n\nSent from React contact form.`;
-    return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [formData]);
-
-  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!formData.name.trim() && !formData.email.trim()) {
-      alert("Please enter at least a name or an email");
-      return;
-    }
-
-    window.location.href = buildMailto();
-
-    console.log("Data yang dikirim:", formData);
-  };
   return (
-    <main className="mx-auto w-screen my-12">
-      <h1 className="text-6xl text-center">Connect / Start A Conversation</h1>
-      <p className="text-center">
-        Based in Depok, Indonesia. Ready For Seeking Job
-      </p>
-      <article className="flex justify-around mt-8">
-        <section>
-          <p className="text-2xl text-gray-400">Quick Contacts</p>
-          <p className="text-lg">
-            <FaMailBulk className="inline" />{" "}
-            <span className="text-gray-400">EMAIL</span>:
-            rizal.mujahiddan@gmail.com
-          </p>
-          <p className="text-lg">
-            <FaLinkedin className="inline" />{" "}
-            <span className="text-gray-400">LINKEDIN</span>:
-            <a href="https://www.linkedin.com/in/rizal-mujahiddan">
-              {" "}
-              rizal-mujahiddan
-            </a>
-          </p>
-          <p className="text-lg">
-            <FaGithub className="inline" />{" "}
-            <span className="text-gray-400">GITHUB</span>:{" "}
-            <a href="github.com/rizal-mujahiddan"> rizal-mujahiddan</a>
-          </p>
-        </section>
-        <section>
-          <p className="text-2xl text-gray-400">Direct Contacts</p>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{ maxWidth: 400, margin: "20px auto" }}
+    <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-20 max-w-3xl mx-auto">
+      <header className="mb-12">
+        <span className="text-xs uppercase tracking-widest text-slate-400 font-mono">
+          Contact
+        </span>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mt-2 text-white">
+          Let's build something
+        </h1>
+        <p className="mt-4 text-slate-400 max-w-2xl">
+          Open to backend engineering, application security, remote roles, and
+          interesting freelance work. Reach out by email or the form below.
+        </p>
+      </header>
+
+      {/* Direct channels */}
+      <div className="flex flex-wrap gap-3 mb-10">
+        <a
+          href={`mailto:${EMAIL}`}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white text-sm transition-colors"
+        >
+          <Mail className="w-4 h-4" /> Email
+        </a>
+        <a
+          href="https://github.com/rizal-mujahiddan"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white text-sm transition-colors"
+        >
+          <FaGithub className="w-4 h-4" /> GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/rizal-mujahiddan"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white text-sm transition-colors"
+        >
+          <FaLinkedin className="w-4 h-4" /> LinkedIn
+        </a>
+      </div>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="name" className="block text-sm text-slate-400 mb-1.5">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              required
+              value={form.name}
+              onChange={update("name")}
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-600 focus:border-cyan-500 focus:outline-none transition-colors"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm text-slate-400 mb-1.5">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              required
+              value={form.email}
+              onChange={update("email")}
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-600 focus:border-cyan-500 focus:outline-none transition-colors"
+              placeholder="you@example.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm text-slate-400 mb-1.5">
+            Message
+          </label>
+          <textarea
+            id="message"
+            required
+            rows={6}
+            value={form.message}
+            onChange={update("message")}
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-600 focus:border-cyan-500 focus:outline-none transition-colors resize-none"
+            placeholder="What are you building, or what role are you hiring for?"
+          />
+        </div>
+
+        <div className="flex items-center gap-4">
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-medium hover:bg-cyan-400 transition-colors"
           >
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField
-                  label="Full Name"
-                  name="name" // Harus sama dengan key di dalam state
-                  value={formData.name}
-                  onChange={handleChange}
-                  fullWidth
-                  sx={darkTextFieldStyle}
-                />
-              </Grid>
+            Send Message <Send className="w-4 h-4" />
+          </button>
+          {sent && (
+            <span className="text-sm text-emerald-400">
+              Opening your email client…
+            </span>
+          )}
+        </div>
 
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField
-                  label="Email"
-                  name="email" // Harus sama dengan key di dalam state
-                  value={formData.email}
-                  onChange={handleChange}
-                  fullWidth
-                  sx={darkTextFieldStyle}
-                />
-              </Grid>
-
-              <Grid size={{ xs: 12 }}>
-                <TextField
-                  label="Message"
-                  name="message"
-                  type="textarea"
-                  value={formData.message}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                  sx={darkTextFieldStyle}
-                />
-              </Grid>
-
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-              >
-                Send Data
-              </Button>
-            </Grid>
-          </Box>
-        </section>
-      </article>
+        <p className="text-xs text-slate-500 pt-2">
+          This form opens your email client with the message pre-filled. No
+          data is sent to a server.
+        </p>
+      </form>
     </main>
   );
 }

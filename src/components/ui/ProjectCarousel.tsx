@@ -1,48 +1,30 @@
 import Carousel from "./Carousel";
 import CarouselItem from "./CarouselItem";
+import { featuredProjects } from "../../data/projects-data";
 
 export default function ProjectCarousel() {
   return (
     <Carousel>
-      <CarouselItem
-        className="relative overflow-hidden cursor-pointer"
-        onClick={() =>
-          window.open(
-            "https://huggingface.co/spaces/rizalm69/TelcoCustomerChurnModel",
-            "_blank",
-          )
-        }
-      >
-        <div
-          className="
-            absolute inset-0
-            bg-[url('/TelcoCustomerChurnModelaHuggingFaceSpacebyRizalm69.png')]
-            bg-cover bg-center
-            blur-xs scale-100
-          "
-        />
-        <div className="relative z-10">
-          Telco Customer Churn Model (Data Science)
-        </div>
-      </CarouselItem>
-      <CarouselItem
-        className="relative overflow-hidden cursor-pointer"
-        onClick={() =>
-          window.open(
-            "https://github.com/rizal-mujahiddan/learning-Music-Tunes",
-            "_blank",
-          )
-        }
-      >
-        <div className="relative z-10">
-          Library Tunes for Music (Rust Programming)
-        </div>
-      </CarouselItem>
-      <CarouselItem>
-        <div className="relative z-10">
-          Library Tunes for Music (Rust Programming)
-        </div>
-      </CarouselItem>
+      {featuredProjects.map((project) => {
+        const url = project.link ?? project.repo;
+        return (
+          <CarouselItem
+            key={project.slug}
+            className="relative overflow-hidden cursor-pointer"
+            onClick={() => {
+              if (url) window.open(url, "_blank");
+            }}
+          >
+            {project.image && (
+              <div
+                className="absolute inset-0 bg-cover bg-center blur-xs scale-100"
+                style={{ backgroundImage: `url('${project.image}')` }}
+              />
+            )}
+            <div className="relative z-10">{project.title}</div>
+          </CarouselItem>
+        );
+      })}
     </Carousel>
   );
 }
